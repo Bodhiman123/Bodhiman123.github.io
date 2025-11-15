@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Personal Portfolio</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <a href="#home" class="logo">Bodhisattwa Sarkar</a>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="home-section">
+            <div class="container">
+                <h1>Hi, I'm Bodhisattwa Sarkar</h1>
+                <p class="subtitle">A student pursuing B.Tech at Delhi Technological University </p>
+                <a href="#projects" class="btn">View My Work</a>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="container">
+                <h2>About Me</h2>
+                <div class="about-content">
+                    <div class="about-image">
+                        <img src="images/profile-pic.jpg" alt="A photo of [Your Name]">
+                    </div>
+                    <div class="about-text">
+                        <p>
+                            Hello! I'm a passionate and driven student based in Delhi. I thrive on solving complex problems and building beautiful, functional web applications. My journey in tech started when I [mention a short story or motivation].
+                        </p>
+                        <p>
+                            When I'm not coding, you can find me playing games, watching anime, or exploring the latest advancements in psychology.
+                        </p>
+                        
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/bodhisattwa-sarkar-904318388/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                            <a href="https://github.com/Bodhiman123" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="https://www.instagram.com/disastrous__?igsh=MXJuMHNyb29xbHpucA==" target="_blank"><i class="fas fa-globe"></i> Other</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="skills-section">
+            <div class="container">
+                <h2>Education & Skills</h2>
+                <div class="skills-content">
+                    <div class="education">
+                        <h3>Education</h3>
+                        <div class="edu-item">
+                            <strong>Pursuing B.Tech in Computer Science and Engineering</strong>
+                            <p>Delhi Technological University | 2025 - 2029</p>
+                        </div>
+                        <div class="edu-item">
+                        <p>Secured a score of 99.68 percentile in JEE MAINS</p>
+                        <p>Extremely skilled at video editing with a mastery of every major software</p>
+                        </div>
+                    </div>
+                    <div class="skills">
+                        <h3>Skills</h3>
+                        <ul class="skills-list">
+                            <li>HTML5</li>
+                            <li>CSS3</li>
+                            <li>JavaScript</li>
+                            <li>React</li>
+                            <li>Node.js</li>
+                            <li>Python</li>
+                            <li>UI/UX Design</li>
+                            <li>Git & GitHub</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects-section">
+            <div class="container">
+                <h2>My Projects</h2>
+                <div class="projects-grid">
+                    
+                    <div class="project-card">
+                        <img src="images/Tic_tac_toe.png" alt="Screenshot of Project One">
+                        <h3>Tic-tac-toe</h3>
+                        <p>This is the popular game tic-tac-toe.</p>
+                        <div class="project-links">
+                            <a href="images/Tic_tac_toe.png" class_name="btn-outline" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <img src="images/rock_paper_scissors1.png" alt="Screenshot of Project Two">
+                        <h3>Rock Paper Scissors</h3>
+                        <p>This is a brief description of my second project. It was made to play rock paper scissors</p>
+                        <div class="project-links">
+                        <a href="https://bodhiman123.github.io/Rock-paper-scissors-/" class_name="btn-outline" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+
+                    
+                    
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2>Get In Touch</h2>
+                <p>I'm always open to discussing new projects or opportunities. Feel free to send me a message!</p>
+                
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+
+                <div class="contact-info">
+                    <p>Or reach me directly:</p>
+                    <p><i class="fas fa-envelope"></i> <a href="bodhisarkar981@gmail.com">[bodhisarkar981@gmail.com]</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Bodhisattwa Sarkar. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

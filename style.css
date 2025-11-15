@@ -1,0 +1,605 @@
+/*
+  "Coolest" Personal Portfolio Stylesheet
+  Theme: Radial Crimson Gradient + Real Scroll Animations
+*/
+
+/* ======== FONTS & IMPORTS ======== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto+Mono:wght@400;700&display=swap');
+
+/* ======== ROOT VARIABLES / THEME ======== */
+:root {
+    --primary-bg: #1a0505;     /* Very Dark Red (for header) */
+    --secondary-bg: #3b1212;   /* Dark Crimson (for cards) */
+    --primary-text: #f5f5f5;   /* Clean White */
+    --secondary-text: #d1d1d1; /* Light Gray */
+    --accent-color: #ff4747;   /* Bright Fiery Red */
+    --accent-color-alt: #ff6b6b; /* Lighter Fiery Red */
+    --border-color: #5a2a2a;    /* Dark Red Border */
+    
+    --font-sans: 'Inter', sans-serif;
+    --font-mono: 'Roboto Mono', monospace;
+    --header-height: 70px;
+    --shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.7);
+}
+
+/* ======== GLOBAL & RESET ======== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-height);
+    
+    /* --- CURSOR FIX --- */
+    /* All custom cursor code has been removed. Back to normal. */
+}
+
+a, button, .btn {
+    /* --- CURSOR FIX --- */
+    /* Back to the default pointer */
+    cursor: pointer;
+}
+
+
+body {
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    color: var(--secondary-text);
+    
+    /* --- COOLER BACKGROUND --- */
+    /* Swapped linear-gradient for a radial-gradient "glow" effect */
+    background-color: #000; /* Fallback */
+    background-image: radial-gradient(circle at 50% 0%, rgba(59, 0, 0, 0.9) 0%, #000000 60%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    -webkit-font-smoothing: antialiased;
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+main {
+    padding: 0 150px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+section {
+    padding: 100px 0;
+    min-height: 90vh;
+}
+
+/* --- COOLER ANIMATIONS (REAL ON-SCROLL) --- */
+/* This new animation will apply to elements as they scroll into view */
+@keyframes reveal-on-scroll {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+        scale: 0.98;
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        scale: 1;
+    }
+}
+
+/* Apply the scroll animation to all sections EXCEPT the first one */
+/* (The first one fades in with the body) */
+.section:not(#home) {
+    /* Set animation properties */
+    animation: reveal-on-scroll linear;
+    
+    /* This is the magic: links the animation to the scroll position */
+    animation-timeline: view();
+    
+    /* Defines *when* in the scroll "view" the animation runs */
+    /* Starts when 10% of the element is visible, ends when 30% is visible */
+    animation-range: entry 10% exit 30%;
+}
+
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    text-decoration: none;
+    color: var(--accent-color);
+    transition: color 0.3s ease;
+}
+a:hover {
+    color: var(--accent-color-alt);
+}
+
+/* ======== TYPOGRAPHY ======== */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--primary-text);
+    line-height: 1.2;
+}
+
+/* Gradient Text (Still cool, so we keep it) */
+.home-section .title-name,
+.home-section .title-subname,
+.section-heading,
+.contact-subheading,
+.logo {
+    background-image: linear-gradient(90deg, var(--accent-color-alt), var(--accent-color) 70%);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    text-fill-color: transparent;
+    display: inline-block;
+}
+.logo {
+    color: var(--accent-color-alt);
+}
+
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+    white-space: nowrap;
+}
+.section-heading span {
+    font-family: var(--font-mono);
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    -webkit-text-fill-color: initial;
+    -moz-text-fill-color: initial;
+    text-fill-color: initial;
+    background-image: none;
+}
+.section-heading::after {
+    content: '';
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    height: 1px;
+    background-color: var(--border-color);
+    margin-left: 1.5rem;
+}
+
+/* ======== BUTTON ======== */
+.btn {
+    display: inline-block;
+    background: transparent;
+    color: var(--accent-color);
+    padding: 0.8rem 1.5rem;
+    border: 1px solid var(--accent-color);
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    text-shadow: none;
+}
+
+.btn:hover {
+    background-color: rgba(255, 71, 71, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(255, 71, 71, 0.2);
+}
+
+/* ======== HEADER / "FROSTED GLASS" NAV ======== */
+.header {
+    background: rgba(26, 5, 5, 0.85);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: var(--header-height);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+}
+.nav-menu li {
+    margin-left: 1.5rem;
+    font-family: var(--font-mono);
+}
+.nav-menu a {
+    color: var(--primary-text);
+    padding: 0.5rem;
+    position: relative;
+    text-shadow: none;
+}
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+/* --- COOLER ANIMATIONS (SIDEBARS) --- */
+@keyframes slide-in-left {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+@keyframes slide-in-right {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.left-sidebar, .right-sidebar {
+    position: fixed;
+    bottom: 0;
+    width: 40px;
+    z-index: 900;
+    opacity: 0; /* Start as invisible */
+}
+.left-sidebar {
+    left: 40px;
+    animation: slide-in-left 0.5s 1.5s forwards; /* Slide in after 1.5s */
+}
+.right-sidebar {
+    right: 40px;
+    animation: slide-in-right 0.5s 1.5s forwards; /* Slide in after 1.5s */
+}
+.social-links-vertical, .email-link-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+.social-links-vertical::after, .email-link-vertical::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 100px;
+    background-color: var(--secondary-text);
+    margin-top: 1rem;
+}
+.social-links-vertical a i {
+    font-size: 1.3rem;
+    color: var(--secondary-text);
+    transition: all 0.3s ease;
+}
+.social-links-vertical a:hover i {
+    color: var(--accent-color);
+    transform: translateY(-3px);
+}
+.email-link-vertical a {
+    writing-mode: vertical-rl;
+    font-family: var(--font-mono);
+    color: var(--secondary-text);
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+.email-link-vertical a:hover {
+    color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+/* ======== HOME SECTION ======== */
+.home-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    padding-top: var(--header-height);
+}
+.home-section .subtitle {
+    color: var(--accent-color);
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+.home-section .title-name {
+    font-size: 4.5rem;
+    margin-bottom: 0.5rem;
+}
+.home-section .title-subname {
+    font-size: 3.5rem;
+    color: var(--secondary-text);
+    margin-bottom: 2rem;
+}
+.home-section .home-description {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin-bottom: 2.5rem;
+}
+
+/* ======== ABOUT SECTION ======== */
+.about-content {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 3rem;
+    align-items: flex-start;
+}
+.about-text p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+.about-image {
+    position: relative;
+    max-width: 300px;
+    margin: 0 auto;
+}
+.image-wrapper {
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: var(--accent-color);
+    transition: all 0.3s ease; /* --- COOLER HOVER --- */
+}
+/* --- COOLER HOVER (Added glow) --- */
+.image-wrapper:hover {
+    box-shadow: 0 0 25px rgba(255, 71, 71, 0.5);
+}
+.image-wrapper img {
+    display: block;
+    filter: grayscale(100%) contrast(1.1);
+    transition: all 0.3s ease;
+}
+.image-wrapper:hover img {
+    filter: none;
+    transform: scale(1.05);
+}
+.image-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--accent-color-alt);
+    border-radius: 5px;
+    z-index: -1;
+    transition: all 0.3s ease;
+}
+.image-wrapper:hover::after {
+    top: 10px;
+    left: 10px;
+}
+
+/* ======== SKILLS SECTION ======== */
+.skills-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+}
+.skills-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+}
+.skills-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    transition: all 0.3s ease; /* --- COOLER HOVER --- */
+}
+/* --- COOLER HOVER (Glow text effect) --- */
+.skills-list li:hover {
+    color: var(--accent-color-alt);
+    transform: translateX(5px);
+    text-shadow: 0 0 8px var(--accent-color-alt);
+}
+.skills-list li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--accent-color);
+    text-shadow: none;
+}
+.edu-item {
+    margin-bottom: 1.5rem;
+}
+.edu-item strong {
+    font-size: 1.2rem;
+    color: var(--primary-text);
+}
+
+/* ======== PROJECTS SECTION ======== */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+.project-card {
+    background: var(--secondary-bg);
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- COOLER HOVER (Red glow + stronger lift) --- */
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 30px -5px rgba(255, 71, 71, 0.3);
+}
+.project-image {
+    background: var(--accent-color);
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+}
+.project-image img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(80%) opacity(0.8);
+    transition: all 0.3s ease;
+}
+/* --- COOLER HOVER (Stronger zoom) --- */
+.project-card:hover .project-image img {
+    filter: grayscale(0%) opacity(1);
+    transform: scale(1.1);
+}
+.project-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.project-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+.project-title a {
+    color: var(--primary-text);
+    background-image: none;
+    -webkit-text-fill-color: initial;
+    text-fill-color: initial;
+}
+.project-title a:hover {
+    color: var(--accent-color);
+}
+.project-description {
+    font-size: 0.95rem;
+    flex-grow: 1;
+}
+.project-tech-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--secondary-text);
+    margin: 1rem 0;
+}
+.project-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+.project-links a {
+    color: var(--secondary-text);
+    font-size: 1.4rem;
+}
+.project-links a:hover {
+    color: var(--accent-color-alt);
+}
+
+/* ======== CONTACT SECTION ======== */
+.contact-section {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+.contact-section .section-heading span {
+    font-size: 1.2rem;
+}
+.contact-subheading {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+.contact-text {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+}
+.contact-section .btn {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+}
+
+/* ======== FOOTER ======== */
+.footer {
+    text-align: center;
+    padding: 2rem 0;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--secondary-text);
+}
+.footer p {
+    margin-bottom: 0.5rem;
+}
+
+/* ======== RESPONSIVE DESIGN ======== */
+@media (max-width: 1080px) {
+    main {
+        padding: 0 100px;
+    }
+    .left-sidebar { left: 20px; }
+    .right-sidebar { right: 20px; }
+}
+@media (max-width: 768px) {
+    .left-sidebar, .right-sidebar {
+        display: none;
+    }
+    main {
+        padding: 0 1rem;
+    }
+    h1 { font-size: 2.5rem; }
+    .home-section .title-name { font-size: 3rem; }
+    .home-section .title-subname { font-size: 2rem; }
+    .section-heading { font-size: 1.5rem; }
+    .section-heading span { font-size: 1.1rem; }
+    .section-heading::after { max-width: 100px; }
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+    .about-image {
+        grid-row: 1;
+        margin-bottom: 2rem;
+    }
+    .skills-content {
+        grid-template-columns: 1fr;
+    }
+    .nav-menu {
+        display: none; 
+    }
+    
+    /* On mobile, disable the scroll-timeline animation */
+    /* and just make them fade in */
+    .section:not(#home) {
+        animation: fadeIn 1s ease;
+        animation-timeline: auto; /* Resets the scroll timeline */
+    }
+}
+@media (max-width: 480px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    .contact-subheading {
+        font-size: 2rem;
+    }
+}
